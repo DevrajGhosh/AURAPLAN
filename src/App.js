@@ -4,18 +4,29 @@ import "./App.css";
 import TodoList from "./TodoList";
 import Calendar from "./Calendar";
 
+/* =====================
+   BACKEND URL
+====================== */
+const BASE_URL = "https://auraplan-backend.onrender.com";
+
 function App() {
-  // AUTH STATES
+  /* =====================
+     AUTH STATES
+  ====================== */
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [user, setUser] = useState(null);
 
-  // UI STATES
+  /* =====================
+     UI STATES
+  ====================== */
   const [isSignup, setIsSignup] = useState(false);
   const [flash, setFlash] = useState("");
 
-  // QUOTES
+  /* =====================
+     QUOTES
+  ====================== */
   const quotes = [
     "Small steps every day 🌱",
     "You are doing better than you think 💫",
@@ -31,8 +42,9 @@ function App() {
     const interval = setInterval(() => {
       setQuoteIndex((prev) => (prev + 1) % quotes.length);
     }, 5000);
+
     return () => clearInterval(interval);
-  }, [quotes.length]);
+  }, []);
 
   const [imgSeed] = useState(Math.random());
 
@@ -48,14 +60,15 @@ function App() {
     }
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        { email, password }
-      );
+      const res = await axios.post(`${BASE_URL}/api/auth/login`, {
+        email,
+        password
+      });
+
       setUser(res.data);
       setFlash("");
     } catch (err) {
-      setFlash(err.response?.data?.message || "Login failed");
+      setFlash("Login failed. Check credentials.");
       setTimeout(() => setFlash(""), 3000);
     }
   };
@@ -68,16 +81,17 @@ function App() {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/auth/signup", {
+      await axios.post(`${BASE_URL}/api/auth/signup`, {
         name,
         email,
         password
       });
+
       setFlash("Signup successful! Please login.");
       setIsSignup(false);
       setTimeout(() => setFlash(""), 3000);
     } catch (err) {
-      setFlash(err.response?.data?.message || "Signup failed");
+      setFlash("Signup failed. Email may already exist.");
       setTimeout(() => setFlash(""), 3000);
     }
   };
@@ -89,6 +103,10 @@ function App() {
     setName("");
     setFlash("");
   };
+
+  /* =====================
+     UI
+  ====================== */
 
   return (
     <div className="layout">

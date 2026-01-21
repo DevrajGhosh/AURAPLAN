@@ -5,32 +5,35 @@ import "./TodoList.css";
 function TodoList({ userId }) {
   const [todos, setTodos] = useState([]);
   const [text, setText] = useState("");
+  const BASE_URL = "https://auraplan-backend.onrender.com";
+
 
   useEffect(() => {
     if (!userId) return;
 
     axios
-      .get(`http://localhost:5000/api/todos/${userId}`)
+      .get(`${BASE_URL}/api/todos/${userId}`)
       .then((res) => setTodos(res.data));
   }, [userId]);
 
   const addTodo = async () => {
     if (!text.trim()) return;
 
-    const res = await axios.post("http://localhost:5000/api/todos", {
-      userId,
-      text,
-      done: false
-    });
+    const res = await axios.post(`${BASE_URL}/api/todos`, {
+  userId,
+  text,
+  done: false
+});
+
 
     setTodos([...todos, res.data]);
     setText("");
   };
 
   const toggleTodo = async (id, done) => {
-    await axios.put(`http://localhost:5000/api/todos/${id}`, {
-      done: !done
-    });
+    await axios.put(`${BASE_URL}/api/todos/${id}`, {
+  done: !done
+});
 
     setTodos(
       todos.map((t) =>
@@ -40,7 +43,7 @@ function TodoList({ userId }) {
   };
 
   const deleteTodo = async (id) => {
-    await axios.delete(`http://localhost:5000/api/todos/${id}`);
+    await axios.delete(`${BASE_URL}/api/todos/${id}`);
     setTodos(todos.filter((t) => t._id !== id));
   };
 
