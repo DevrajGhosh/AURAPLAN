@@ -32,7 +32,7 @@ function App() {
       setQuoteIndex((prev) => (prev + 1) % quotes.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [quotes.length]);
 
   const [imgSeed] = useState(Math.random());
 
