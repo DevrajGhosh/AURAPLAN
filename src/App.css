@@ -1,0 +1,274 @@
+/* =========================
+   FLASH MESSAGE
+========================= */
+.flash-error {
+  color: #fff;
+  background: linear-gradient(135deg, #e74c3c, #ff7675);
+  padding: 10px 14px;
+  margin-top: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  box-shadow: 0 6px 14px rgba(231, 76, 60, 0.25);
+  animation: fadeIn 0.35s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   GLOBAL
+========================= */
+body {
+  margin: 0;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  background: linear-gradient(180deg, #f7f7fb, #ffffff);
+  color: #333;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* =========================
+   HEADER
+========================= */
+.header {
+  background: linear-gradient(90deg, #e8306d, #fbc2eb);
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #7364d4;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* =========================
+   SIGN IN BOX
+========================= */
+.signin-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.signin-box input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  min-width: 140px;
+  transition: box-shadow 0.2s ease;
+}
+
+.signin-box input:focus {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.6);
+}
+
+.signin-box button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: white;
+  color: #f06fa1;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.signin-box button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.toggle-auth {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.toggle-auth:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   WELCOME TEXT
+========================= */
+.welcome-text {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.welcome-text button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background: white;
+  color: #f06fa1;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* =========================
+   CONTENT
+========================= */
+.content {
+  display: flex;
+  flex: 1;
+  padding: 24px;
+  gap: 24px;
+}
+
+/* =========================
+   SIDEBARS
+========================= */
+.left,
+.right {
+  width: 25%;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.center {
+  width: 50%;
+  text-align: center;
+}
+
+/* =========================
+   IMAGES
+========================= */
+.image-row {
+  display: flex;
+  gap: 10px;
+}
+
+.image-row img {
+  width: 50%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.image-row img:hover {
+  transform: scale(1.03);
+}
+
+/* =========================
+   QUOTES
+========================= */
+.quote {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 24px;
+  animation: fade 6s infinite alternate;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* =========================
+   STORIES
+========================= */
+.stories {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.stories h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.stories p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+  background: linear-gradient(90deg, #f6a5c0, #fbc2eb);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-size: 14px;
+  box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1024px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .left,
+  .center,
+  .right {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .signin-box {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .signin-box input,
+  .signin-box button {
+    width: 100%;
+  }
+
+  .image-row {
+    flex-direction: column;
+  }
+
+  .image-row img {
+    width: 100%;
+    height: auto;
+  }
+}
