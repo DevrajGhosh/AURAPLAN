@@ -5,7 +5,7 @@ import "./TodoList.css";
 function TodoList({ userId }) {
   const [todos, setTodos] = useState([]);
   const [text, setText] = useState("");
-  const BASE_URL = "https://auraplan-backend.onrender.com";
+  const BASE_URL = "https://auraplan.onrender.com";
 
 
   useEffect(() => {

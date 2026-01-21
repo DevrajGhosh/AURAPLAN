@@ -7,7 +7,7 @@ import Calendar from "./Calendar";
 /* =====================
    BACKEND URL
 ====================== */
-const BASE_URL = "https://auraplan-backend.onrender.com";
+const BASE_URL = "https://auraplan.onrender.com";
 
 function App() {
   /* =====================
