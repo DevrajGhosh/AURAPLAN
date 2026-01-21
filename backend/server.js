@@ -16,7 +16,7 @@ app.use("/api/todos", todoRoutes);
 
 // MONGODB
 mongoose
-  .connect("mongodb://127.0.0.1:27017/auraplan")
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error(err));
 
